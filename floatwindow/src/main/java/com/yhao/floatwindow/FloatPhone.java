@@ -6,6 +6,8 @@ import android.os.Build;
 import android.view.View;
 import android.view.WindowManager;
 
+import com.yhao.floatwindow.permission.FloatPermission;
+
 /**
  * Created by yhao on 17-11-14.
  * https://github.com/yhaolpz
@@ -79,6 +81,8 @@ class FloatPhone extends FloatView {
                     }
                 });
             }
+        } else if (FloatPermission.isSpecialRom()) {
+            req();
         } else {
             try {
                 mLayoutParams.type = WindowManager.LayoutParams.TYPE_TOAST;
