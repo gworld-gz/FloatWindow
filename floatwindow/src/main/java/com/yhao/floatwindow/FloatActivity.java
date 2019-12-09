@@ -28,15 +28,20 @@ public class FloatActivity extends Activity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-//        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
-//            requestAlertWindowPermission();
-//        }
-            floatPermission = new FloatPermission();
-            if (floatPermission.isHavePermission(this)) {
-                mPermissionListener.onSuccess();
-            } else {
-                floatPermission.gotoPermission(this);
-            }
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+            requestAlertWindowPermission();
+        }
+        floatPermission = new FloatPermission();
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        if (floatPermission.isHavePermission(this)) {
+            mPermissionListener.onSuccess();
+        } else {
+            floatPermission.gotoPermission(this);
+        }
     }
 
     @RequiresApi(api = Build.VERSION_CODES.M)
