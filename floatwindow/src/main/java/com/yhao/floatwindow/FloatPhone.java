@@ -81,12 +81,13 @@ class FloatPhone extends FloatView {
                     }
                 });
             }
-        } else if (FloatPermission.isSpecialRom()) {
-            req();
         } else {
             try {
                 mLayoutParams.type = WindowManager.LayoutParams.TYPE_TOAST;
                 mWindowManager.addView(mView, mLayoutParams);
+                if (mPermissionListener != null) {
+                    mPermissionListener.onSuccess();
+                }
             } catch (Exception e) {
                 mWindowManager.removeView(mView);
                 LogUtil.e("TYPE_TOAST 失败");
