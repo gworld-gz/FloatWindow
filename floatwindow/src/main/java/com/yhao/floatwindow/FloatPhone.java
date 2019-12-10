@@ -6,8 +6,6 @@ import android.os.Build;
 import android.view.View;
 import android.view.WindowManager;
 
-import com.yhao.floatwindow.permission.FloatPermission;
-
 /**
  * Created by yhao on 17-11-14.
  * https://github.com/yhaolpz

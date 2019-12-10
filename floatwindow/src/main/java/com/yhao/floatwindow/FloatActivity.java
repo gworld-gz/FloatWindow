@@ -9,8 +9,6 @@ import android.os.Bundle;
 import android.provider.Settings;
 import android.support.annotation.RequiresApi;
 
-import com.yhao.floatwindow.permission.FloatPermission;
-
 import java.util.ArrayList;
 import java.util.List;
 
@@ -23,24 +21,13 @@ public class FloatActivity extends Activity {
 
     private static List<PermissionListener> mPermissionListenerList;
     private static PermissionListener mPermissionListener;
-    private FloatPermission floatPermission;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
             requestAlertWindowPermission();
-        }
-        floatPermission = new FloatPermission();
-    }
-
-    @Override
-    protected void onResume() {
-        super.onResume();
-        if (floatPermission.isHavePermission(this)) {
-            mPermissionListener.onSuccess();
-        } else {
-            floatPermission.gotoPermission(this);
         }
     }
 
